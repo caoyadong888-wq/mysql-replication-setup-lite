@@ -1,0 +1,6 @@
+-- Lab replication account. Render with render_init_sql.py.
+-- Privilege name REPLICATION SLAVE: check upstream docs before you widen it.
+-- Host '%' is for the compose network only. Check upstream docs for account hosts.
+CREATE USER IF NOT EXISTS '{{REPL_USER}}'@'%' IDENTIFIED BY '{{REPL_PASSWORD}}';
+GRANT REPLICATION SLAVE ON *.* TO '{{REPL_USER}}'@'%';
+FLUSH PRIVILEGES;
